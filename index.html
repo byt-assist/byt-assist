@@ -4,16 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>BYT Assist — Official Ecosystem</title>
-    <meta name="description" content="BYT (BEP-20) — digital asset backed by gold (SKR), diamonds, and institutional escrow. Buy BYT, earn yield, get loans.">
+    <meta name="description" content="BYT (BEP-20) — digital asset backed by gold, diamonds, and institutional escrow. Buy BYT, earn yield, get loans.">
     <meta name="keywords" content="BYT, BEP-20, crypto, gold-backed token, escrow, loans, deposit">
-    <link rel="canonical" href="https://byt-assist.com">
+    <link rel="canonical" href="https://byt-assist.github.io/byt-assist/">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             background: linear-gradient(135deg, #0a0a2a 0%, #000000 100%);
@@ -21,18 +20,39 @@
             line-height: 1.6;
             padding: 20px;
         }
-
         .container {
             max-width: 1200px;
             margin: 0 auto;
         }
-
-        /* Header */
+        .lang-switch {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            justify-content: flex-end;
+            z-index: 100;
+            max-width: 80%;
+        }
+        .lang-btn {
+            background: rgba(255,255,255,0.1);
+            border: 1px solid #FFD700;
+            color: #FFD700;
+            padding: 3px 8px;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.65rem;
+            transition: all 0.3s;
+        }
+        .lang-btn.active, .lang-btn:hover {
+            background: #FFD700;
+            color: #000;
+        }
         .header {
             text-align: center;
-            padding: 60px 20px 40px;
+            padding: 100px 20px 40px;
         }
-
         .logo {
             font-size: 4rem;
             font-weight: bold;
@@ -42,24 +62,20 @@
             color: transparent;
             margin-bottom: 20px;
         }
-
         .tagline {
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             color: #ccc;
             margin-bottom: 30px;
         }
-
         .contract {
             background: rgba(255,255,255,0.1);
-            padding: 10px 20px;
+            padding: 8px 16px;
             border-radius: 40px;
             display: inline-block;
             font-family: monospace;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             word-break: break-all;
         }
-
-        /* Buttons */
         .btn-group {
             display: flex;
             flex-wrap: wrap;
@@ -67,91 +83,73 @@
             gap: 15px;
             margin: 30px 0;
         }
-
         .btn {
             padding: 12px 24px;
             border-radius: 40px;
             text-decoration: none;
             font-weight: bold;
-            transition: all 0.3s ease;
-            display: inline-block;
+            transition: all 0.3s;
         }
-
         .btn-primary {
             background: #FFD700;
             color: #000;
         }
-
         .btn-primary:hover {
             background: #FFA500;
             transform: translateY(-2px);
         }
-
         .btn-secondary {
             background: rgba(255,255,255,0.1);
             color: #fff;
             border: 1px solid #FFD700;
         }
-
         .btn-secondary:hover {
             background: rgba(255,215,0,0.2);
             transform: translateY(-2px);
         }
-
-        /* Cards */
         .section {
             margin: 60px 0;
         }
-
         .section-title {
             text-align: center;
             font-size: 2rem;
             margin-bottom: 40px;
             color: #FFD700;
         }
-
         .cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 30px;
         }
-
         .card {
             background: rgba(255,255,255,0.05);
             border-radius: 20px;
             padding: 30px;
             backdrop-filter: blur(10px);
             border: 1px solid rgba(255,215,0,0.3);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s;
         }
-
         .card:hover {
             transform: translateY(-5px);
             border-color: #FFD700;
         }
-
         .card-icon {
             font-size: 2.5rem;
             margin-bottom: 20px;
         }
-
         .card h3 {
             margin-bottom: 15px;
             color: #FFD700;
         }
-
         .card p {
             color: #ccc;
             margin-bottom: 20px;
         }
-
         .card-link {
             color: #FFD700;
             text-decoration: none;
             font-weight: bold;
         }
-
-        /* Partners */
         .partners {
             display: flex;
             flex-wrap: wrap;
@@ -159,15 +157,12 @@
             gap: 40px;
             margin: 40px 0;
         }
-
         .partner {
             background: rgba(255,255,255,0.05);
             padding: 15px 25px;
             border-radius: 40px;
             font-weight: bold;
         }
-
-        /* Footer */
         .footer {
             text-align: center;
             padding: 40px 20px;
@@ -175,124 +170,130 @@
             border-top: 1px solid rgba(255,255,255,0.1);
             color: #888;
         }
-
         .footer a {
             color: #FFD700;
             text-decoration: none;
         }
-
         @media (max-width: 768px) {
             .logo { font-size: 2.5rem; }
+            .lang-switch { position: static; justify-content: center; margin-bottom: 20px; }
+            .header { padding-top: 20px; }
             .btn-group { flex-direction: column; align-items: center; }
             .btn { width: 80%; text-align: center; }
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="header">
-            <div class="logo">
-    <img src="logo.png" alt="BYT Assist" style="max-width: 280px;">
-            </div>
-            <div class="tagline">Digital asset backed by gold, diamonds, and institutional escrow</div>
-            <div class="contract">📄 Contract: 0x7352cDBcA63F62358f08F6514d3B7fF2a2872AaD</div>
-            <div class="btn-group">
-                <a href="https://t.me/byt_assist_bot" class="btn btn-primary" target="_blank">🤖 Telegram Bot</a>
-                <a href="https://app.binance.com/uni-qr/web3-token-details?utm_medium=share&tokenCA=0x7352cdbca63f62358f08f6514d3b7ff2a2872aad&binanceChainId=56&chain=bsc" class="btn btn-secondary" target="_blank">💰 Buy BYT</a>
-                <a href="https://t.me/BOYMAT_token_BYT" class="btn btn-secondary" target="_blank">💬 Support</a>
-            </div>
-        </div>
+<div class="container">
+    <div class="lang-switch" id="langSwitcher">
+        <button class="lang-btn" data-lang="en">🇬🇧 EN</button>
+        <button class="lang-btn" data-lang="ru">🇷🇺 RU</button>
+        <button class="lang-btn" data-lang="ar">🇦🇪 AR</button>
+        <button class="lang-btn" data-lang="zh">🇨🇳 中文</button>
+        <button class="lang-btn" data-lang="tr">🇹🇷 TR</button>
+        <button class="lang-btn" data-lang="hi">🇮🇳 HI</button>
+        <button class="lang-btn" data-lang="es">🇪🇸 ES</button>
+        <button class="lang-btn" data-lang="fr">🇫🇷 FR</button>
+        <button class="lang-btn" data-lang="de">🇩🇪 DE</button>
+        <button class="lang-btn" data-lang="id">🇮🇩 ID</button>
+        <button class="lang-btn" data-lang="uz">🇺🇿 UZ</button>
+        <button class="lang-btn" data-lang="kg">🇰🇬 KG</button>
+        <button class="lang-btn" data-lang="kz">🇰🇿 KZ</button>
+        <button class="lang-btn" data-lang="tj">🇹🇯 TJ</button>
+        <button class="lang-btn" data-lang="tm">🇹🇲 TM</button>
+        <button class="lang-btn" data-lang="az">🇦🇿 AZ</button>
+        <button class="lang-btn" data-lang="ge">🇬🇪 GE</button>
+        <button class="lang-btn" data-lang="am">🇦🇲 AM</button>
+        <button class="lang-btn" data-lang="he">🇮🇱 HE</button>
+        <button class="lang-btn" data-lang="fa">🇮🇷 FA</button>
+        <button class="lang-btn" data-lang="ko">🇰🇷 KO</button>
+        <button class="lang-btn" data-lang="lv">🇱🇻 LV</button>
+        <button class="lang-btn" data-lang="ja">🇯🇵 JA</button>
+        <button class="lang-btn" data-lang="br">🇧🇷 PT</button>
+        <button class="lang-btn" data-lang="ve">🇻🇪 ES</button>
+    </div>
 
-        <div class="section">
-            <div class="section-title">⚡ What You Can Do With BYT</div>
-            <div class="cards">
-                <div class="card">
-                    <div class="card-icon">💰</div>
-                    <h3>Buy BYT</h3>
-                    <p>Card, SWIFT, SEPA, P2P — 50+ currencies. Instant delivery to your wallet.</p>
-                    <a href="https://app.binance.com/uni-qr/web3-token-details?utm_medium=share&tokenCA=0x7352cdbca63f62358f08f6514d3b7ff2a2872aad&binanceChainId=56&chain=bsc" class="card-link" target="_blank">Buy now →</a>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📈</div>
-                    <h3>Earn Yield</h3>
-                    <p>Deposit BYT for 25–60 months. Earn up to 19.8% APY. Micro deposits from 0.001 BYT.</p>
-                    <a href="https://t.me/byt_assist_bot" class="card-link" target="_blank">Start earning →</a>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🏦</div>
-                    <h3>Get a Loan</h3>
-                    <p>Use BYT as collateral. Crypto mortgage, Islamic financing, microcredit.</p>
-                    <a href="https://t.me/byt_assist_bot" class="card-link" target="_blank">Apply now →</a>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🔒</div>
-                    <h3>Escrow Services</h3>
-                    <p>SWIFT GPI, DMCC Dubai, LEXR Switzerland. Safe fiat → BYT conversions.</p>
-                    <a href="https://t.me/byt_assist_bot" class="card-link" target="_blank">Learn more →</a>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🥇</div>
-                    <h3>Gold & Diamonds</h3>
-                    <p>Buy tokenized gold (PAXG, XAUT) with BYT. Long-term storage 5–20 years.</p>
-                    <a href="https://t.me/byt_assist_bot" class="card-link" target="_blank">Invest →</a>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🏢</div>
-                    <h3>Business Solutions</h3>
-                    <p>Accept BYT payments. Corporate treasury, merchant services, B2B cross-border.</p>
-                    <a href="https://t.me/byt_assist_bot" class="card-link" target="_blank">Get started →</a>
-                </div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">🤝 Partners & Integrations</div>
-            <div class="partners">
-                <div class="partner">BNY Mellon</div>
-                <div class="partner">DMCC</div>
-                <div class="partner">LEXR</div>
-                <div class="partner">Escrow.com</div>
-                <div class="partner">Binance</div>
-                <div class="partner">Bybit</div>
-                <div class="partner">OKX</div>
-                <div class="partner">NOWPayments</div>
-                <div class="partner">CertiK</div>
-                <div class="partner">Hacken</div>
-            </div>
-        </div>
-
-        <div class="section">
-            <div class="section-title">📊 BYT Tokenomics</div>
-            <div class="cards">
-                <div class="card">
-                    <div class="card-icon">🔄</div>
-                    <h3>Total Supply</h3>
-                    <p>1,000,000,000 BYT</p>
-                    <p style="font-size:0.9rem">Circulating: 325M | Locked: 675M</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">📉</div>
-                    <h3>Deflationary</h3>
-                    <p>5% of fees burned monthly<br>10% of profits used for buyback & burn</p>
-                </div>
-                <div class="card">
-                    <div class="card-icon">🏦</div>
-                    <h3>Asset Backed</h3>
-                    <p>Gold (SKR) • Diamonds • Real Estate • Institutional loans</p>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <p>© 2026 BYT Assist — CEBIL UAE, DIFC, Dubai</p>
-            <p>
-                <a href="https://t.me/byt_assist_bot" target="_blank">Bot</a> |
-                <a href="https://t.me/BOYMAT_token_BYT" target="_blank">Channel</a> |
-                <a href="#" target="_blank">Whitepaper</a> |
-                <a href="#" target="_blank">Audit</a>
-            </p>
-            <p style="font-size:0.8rem; margin-top:20px">Network: BNB Smart Chain (BEP-20)</p>
+    <div class="header">
+        <div class="logo">BYT ASSIST</div>
+        <div class="tagline" id="tagline">Digital asset backed by gold, diamonds, and institutional escrow</div>
+        <div class="contract" id="contract">📄 Contract: 0x7352cDBcA63F62358f08F6514d3B7fF2a2872AaD</div>
+        <div class="btn-group">
+            <a href="https://t.me/byt_assist_bot" class="btn btn-primary" target="_blank" id="btnBot">🤖 Telegram Bot</a>
+            <a href="https://app.binance.com/uni-qr/web3-token-details?utm_medium=share&tokenCA=0x7352cdbca63f62358f08f6514d3b7ff2a2872aad&binanceChainId=56&chain=bsc" class="btn btn-secondary" target="_blank" id="btnBuy">💰 Buy BYT</a>
+            <a href="https://t.me/BOYMAT_token_BYT" class="btn btn-secondary" target="_blank" id="btnSupport">💬 Support</a>
         </div>
     </div>
+
+    <div class="section">
+        <div class="section-title" id="title1">⚡ What You Can Do With BYT</div>
+        <div class="cards">
+            <div class="card"><div class="card-icon">💰</div><h3 id="card1Title">Buy BYT</h3><p id="card1Desc">Card, SWIFT, SEPA, P2P — 50+ currencies. Instant delivery.</p><a href="https://app.binance.com/uni-qr/web3-token-details?utm_medium=share&tokenCA=0x7352cdbca63f62358f08f6514d3b7ff2a2872aad&binanceChainId=56&chain=bsc" class="card-link" target="_blank" id="card1Link">Buy now →</a></div>
+            <div class="card"><div class="card-icon">📈</div><h3 id="card2Title">Earn Yield</h3><p id="card2Desc">Deposit BYT for 25–60 months. Earn up to 19.8% APY.</p><a href="https://t.me/byt_assist_bot" class="card-link" target="_blank" id="card2Link">Start earning →</a></div>
+            <div class="card"><div class="card-icon">🏦</div><h3 id="card3Title">Get a Loan</h3><p id="card3Desc">Use BYT as collateral. Crypto mortgage, Islamic financing.</p><a href="https://t.me/byt_assist_bot" class="card-link" target="_blank" id="card3Link">Apply now →</a></div>
+            <div class="card"><div class="card-icon">🔒</div><h3 id="card4Title">Escrow Services</h3><p id="card4Desc">SWIFT GPI, DMCC Dubai, LEXR Switzerland. Safe fiat → BYT.</p><a href="https://t.me/byt_assist_bot" class="card-link" target="_blank" id="card4Link">Learn more →</a></div>
+            <div class="card"><div class="card-icon">🥇</div><h3 id="card5Title">Gold & Diamonds</h3><p id="card5Desc">Buy tokenized gold (PAXG, XAUT) with BYT. 5–20 years storage.</p><a href="https://t.me/byt_assist_bot" class="card-link" target="_blank" id="card5Link">Invest →</a></div>
+            <div class="card"><div class="card-icon">🏢</div><h3 id="card6Title">Business Solutions</h3><p id="card6Desc">Accept BYT payments. Corporate treasury, B2B cross-border.</p><a href="https://t.me/byt_assist_bot" class="card-link" target="_blank" id="card6Link">Get started →</a></div>
+        </div>
+    </div>
+
+    <div class="section">
+        <div class="section-title" id="title2">🤝 Partners & Integrations</div>
+        <div class="partners"><div class="partner">BNY Mellon</div><div class="partner">DMCC</div><div class="partner">LEXR</div><div class="partner">Escrow.com</div><div class="partner">Binance</div><div class="partner">Bybit</div><div class="partner">OKX</div><div class="partner">NOWPayments</div><div class="partner">CertiK</div><div class="partner">Hacken</div></div>
+    </div>
+
+    <div class="section">
+        <div class="section-title" id="title3">📊 BYT Tokenomics</div>
+        <div class="cards">
+            <div class="card"><div class="card-icon">🔄</div><h3>Total Supply</h3><p>1,000,000,000 BYT<br>Circulating: 325M | Locked: 675M</p></div>
+            <div class="card"><div class="card-icon">📉</div><h3>Deflationary</h3><p>5% fees burned monthly<br>10% profits buyback & burn</p></div>
+            <div class="card"><div class="card-icon">🏦</div><h3>Asset Backed</h3><p>Gold (SKR) • Diamonds • Real Estate • Loans</p></div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>© 2026 BYT Assist — CEBIL UAE, DIFC, Dubai</p>
+        <p><a href="https://t.me/byt_assist_bot" target="_blank">Bot</a> | <a href="https://t.me/BOYMAT_token_BYT" target="_blank">Channel</a> | <a href="#">Whitepaper</a> | <a href="#">Audit</a></p>
+        <p style="font-size:0.8rem">Network: BNB Smart Chain (BEP-20)</p>
+    </div>
+</div>
+
+<script>
+    const translations = {
+        en: { tagline: "Digital asset backed by gold, diamonds, and institutional escrow", btnBot: "🤖 Telegram Bot", btnBuy: "💰 Buy BYT", btnSupport: "💬 Support", title1: "⚡ What You Can Do With BYT", card1Title: "Buy BYT", card1Desc: "Card, SWIFT, SEPA, P2P — 50+ currencies. Instant delivery.", card2Title: "Earn Yield", card2Desc: "Deposit BYT for 25–60 months. Earn up to 19.8% APY.", card3Title: "Get a Loan", card3Desc: "Use BYT as collateral. Crypto mortgage, Islamic financing.", card4Title: "Escrow Services", card4Desc: "SWIFT GPI, DMCC Dubai, LEXR Switzerland. Safe fiat → BYT.", card5Title: "Gold & Diamonds", card5Desc: "Buy tokenized gold (PAXG, XAUT) with BYT. 5–20 years storage.", card6Title: "Business Solutions", card6Desc: "Accept BYT payments. Corporate treasury, B2B cross-border.", title2: "🤝 Partners & Integrations", title3: "📊 BYT Tokenomics" },
+        ru: { tagline: "Цифровой актив, обеспеченный золотом, бриллиантами и институциональным эскроу", btnBot: "🤖 Telegram Бот", btnBuy: "💰 Купить BYT", btnSupport: "💬 Поддержка", title1: "⚡ Что можно делать с BYT", card1Title: "Купить BYT", card1Desc: "Карта, SWIFT, SEPA, P2P — 50+ валют. Мгновенная доставка.", card2Title: "Зарабатывать", card2Desc: "Депозит BYT на 25–60 месяцев. Доход до 19.8% годовых.", card3Title: "Получить кредит", card3Desc: "BYT как залог. Крипто-ипотека, исламское финансирование.", card4Title: "Эскроу", card4Desc: "SWIFT GPI, DMCC Dubai, LEXR Switzerland. Безопасно.", card5Title: "Золото и бриллианты", card5Desc: "Покупайте токенизированное золото (PAXG, XAUT) за BYT.", card6Title: "Бизнес решения", card6Desc: "Принимайте BYT. Корпоративные казначейства, B2B.", title2: "🤝 Партнёры", title3: "📊 Токеномика BYT" },
+        ar: { tagline: "أصل رقمي مدعوم بالذهب والماس والضمان المؤسسي", btnBot: "🤖 بوت تيليجرام", btnBuy: "💰 شراء BYT", btnSupport: "💬 دعم", title1: "⚡ ماذا يمكنك أن تفعل مع BYT", card1Title: "شراء BYT", card1Desc: "بطاقة، SWIFT، SEPA، P2P — 50+ عملة. تسليم فوري.", card2Title: "كسب العائد", card2Desc: "إيداع BYT لمدة 25–60 شهرًا. أرباح تصل إلى 19.8% سنويًا.", card3Title: "الحصول على قرض", card3Desc: "استخدم BYT كضمان. رهن عقاري، تمويل إسلامي.", card4Title: "خدمات الضمان", card4Desc: "SWIFT GPI، DMCC دبي، LEXR سويسرا. آمن.", card5Title: "الذهب والماس", card5Desc: "شراء الذهب المرمز (PAXG, XAUT) باستخدام BYT.", card6Title: "حلول الأعمال", card6Desc: "قبول BYT. الخزانة المؤسسية، B2B.", title2: "🤝 الشركاء", title3: "📊 اقتصاديات BYT" },
+        zh: { tagline: "由黄金、钻石和机构托管支持的数字资产", btnBot: "🤖 电报机器人", btnBuy: "💰 购买 BYT", btnSupport: "💬 支持", title1: "⚡ 用 BYT 可以做什么", card1Title: "购买 BYT", card1Desc: "银行卡、SWIFT、SEPA、P2P — 50多种货币。即时到账。", card2Title: "赚取收益", card2Desc: "存入 BYT 25–60个月。年化收益高达19.8%。", card3Title: "获得贷款", card3Desc: "以 BYT 为抵押。加密抵押贷款、伊斯兰金融。", card4Title: "托管服务", card4Desc: "SWIFT GPI、DMCC迪拜、LEXR瑞士。安全。", card5Title: "黄金和钻石", card5Desc: "用 BYT 购买代币化黄金 (PAXG, XAUT)。", card6Title: "商业解决方案", card6Desc: "接受 BYT 支付。企业财务、B2B跨境支付。", title2: "🤝 合作伙伴", title3: "📊 BYT 代币经济学" }
+    };
+    const langNames = { en: "English", ru: "Русский", ar: "العربية", zh: "中文", tr: "Türkçe", hi: "हिंदी", es: "Español", fr: "Français", de: "Deutsch", id: "Indonesia", uz: "O‘zbek", kg: "Кыргызча", kz: "Қазақша", tj: "Тоҷикӣ", tm: "Türkmençe", az: "Azərbaycan", ge: "ქართული", am: "Հայերեն", he: "עברית", fa: "فارسی", ko: "한국어", lv: "Latviešu", ja: "日本語", br: "Português", ve: "Español" };
+    function setLanguage(lang) {
+        const t = translations[lang] || translations.en;
+        document.getElementById('tagline').innerText = t.tagline;
+        document.getElementById('btnBot').innerText = t.btnBot;
+        document.getElementById('btnBuy').innerText = t.btnBuy;
+        document.getElementById('btnSupport').innerText = t.btnSupport;
+        document.getElementById('title1').innerText = t.title1;
+        document.getElementById('card1Title').innerText = t.card1Title;
+        document.getElementById('card1Desc').innerText = t.card1Desc;
+        document.getElementById('card2Title').innerText = t.card2Title;
+        document.getElementById('card2Desc').innerText = t.card2Desc;
+        document.getElementById('card3Title').innerText = t.card3Title;
+        document.getElementById('card3Desc').innerText = t.card3Desc;
+        document.getElementById('card4Title').innerText = t.card4Title;
+        document.getElementById('card4Desc').innerText = t.card4Desc;
+        document.getElementById('card5Title').innerText = t.card5Title;
+        document.getElementById('card5Desc').innerText = t.card5Desc;
+        document.getElementById('card6Title').innerText = t.card6Title;
+        document.getElementById('card6Desc').innerText = t.card6Desc;
+        document.getElementById('title2').innerText = t.title2;
+        document.getElementById('title3').innerText = t.title3;
+        localStorage.setItem('byt_lang', lang);
+        document.querySelectorAll('.lang-btn').forEach(btn => btn.classList.remove('active'));
+        if(document.querySelector(`.lang-btn[data-lang="${lang}"]`)) document.querySelector(`.lang-btn[data-lang="${lang}"]`).classList.add('active');
+    }
+    document.querySelectorAll('.lang-btn').forEach(btn => btn.addEventListener('click', () => setLanguage(btn.dataset.lang)));
+    const savedLang = localStorage.getItem('byt_lang');
+    if(savedLang && translations[savedLang]) setLanguage(savedLang);
+    else setLanguage('en');
+</script>
 </body>
 </html>
